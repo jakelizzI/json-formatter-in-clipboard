@@ -15,11 +15,13 @@ I thought it would be convenient to have something to format and rewrite the JSO
 
 ## Development environment
 
+Ubuntu(WSL2)
 ```bash
 $ go version
 go version go1.15.6 linux/amd64
 ```
 
+Windows
 ```cmd
 > go version
 go version go1.17 windows/amd64
