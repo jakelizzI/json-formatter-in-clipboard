@@ -16,7 +16,10 @@ func main() {
 		return
 	}
 	var buf bytes.Buffer
-	// JSONフォーマットでないパターンもたくさんあるのでエラーは捨てる
-	json.Indent(&buf, []byte(text), "", "  ")
+	err2 := json.Indent(&buf, []byte(text), "", "  ")
+	if err2 != nil {
+		// JSONフォーマットでないパターンもたくさんあるのでエラーは捨てる
+		return
+	}
 	clipboard.WriteAll(buf.String())
 }
