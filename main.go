@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"os"
 
@@ -13,5 +15,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		return
 	}
-	fmt.Println(text)
+	var buf bytes.Buffer
+	// JSONフォーマットでないパターンもたくさんあるのでエラーは捨てる
+	json.Indent(&buf, []byte(text), "", "  ")
+	clipboard.WriteAll(buf.String())
 }
